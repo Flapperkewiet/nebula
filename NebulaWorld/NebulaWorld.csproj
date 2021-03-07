@@ -35,6 +35,18 @@
     <Reference Include="Assembly-CSharp">
       <HintPath>..\Libs\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="BenchmarkDotNet">
+      <HintPath>..\..\Benchmark\src\BenchmarkDotNet\bin\Release\netstandard2.0\BenchmarkDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="BenchmarkDotNet.Annotations">
+      <HintPath>..\..\Benchmark\src\BenchmarkDotNet\bin\Release\netstandard2.0\BenchmarkDotNet.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="LZ4, Version=1.0.15.93, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\lz4net.1.0.15.93\lib\net2\LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="Lz4Net, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lz4.Net.1.0.98\lib\net35\Lz4Net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -53,8 +65,12 @@
     <Reference Include="UnityEngine.PhysicsModule">
       <HintPath>..\Libs\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
+    <Reference Include="XZ.NET, Version=2.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\XZ.NET.2.0.0\lib\net20\XZ.NET.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompressionBenchmark.cs" />
     <Compile Include="INetworkProvider.cs" />
     <Compile Include="InGamePopup.cs" />
     <Compile Include="LocalPlayer.cs" />
@@ -76,6 +92,19 @@
       <Project>{c6237195-f77c-40c0-b06a-4ad51cad314d}</Project>
       <Name>NebulaModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="liblzma.dll" />
+    <Content Include="liblzma64.dll" />
+    <Content Include="x64\lz4X64.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\lz4X86.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

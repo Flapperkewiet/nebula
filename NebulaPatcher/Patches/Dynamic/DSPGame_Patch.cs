@@ -9,7 +9,7 @@ namespace NebulaPatcher.Patches.Dynamic
         {
             //Use this function if you need to check/do something every frame
             if (UnityEngine.Input.GetKey(UnityEngine.KeyCode.KeypadEnter))
-                NebulaWorld.SimulatedWorld.LogEntityData();
+                NebulaWorld.CompressionBenchmark.RunAllBenchmarks();
         }
     }
 }

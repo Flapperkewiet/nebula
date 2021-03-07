@@ -7,6 +7,8 @@ using UnityEngine;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+using LZ4;
+using LZ4ps;
 
 namespace NebulaWorld
 {
@@ -24,6 +26,7 @@ namespace NebulaWorld
         {
             remotePlayersModels = new Dictionary<ushort, RemotePlayerModel>();
             Initialized = true;
+            
         }
 
         /// <summary>
@@ -249,42 +252,9 @@ namespace NebulaWorld
             }
         }
 
-        public static void ExportGameTest()
-        {
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-            using (MemoryStream ms = new MemoryStream())
-            {
-                using (BinaryWriter bw = new BinaryWriter(ms))
-                {
-                    GameMain.data.Export(bw);
-                }
-                Log.Info("Raw binary stream contains: " + ms.ToArray().Length + " bytes");
-            }
-            sw.Stop();
-            Log.Info("Raw binary stream took: " + sw.Elapsed.TotalMilliseconds + " ms");
-            sw.Reset();
-            sw.Start();
-            using (MemoryStream ms = new MemoryStream())
-            {
-                using (GZipStream gzip = new GZipStream(ms, CompressionMode.Compress))
-                {
-                    using (BinaryWriter bw = new BinaryWriter(gzip))
-                    {
-                        GameMain.data.Export(bw);
-                    }
-                }
-                Log.Info("Gzip stream contains: " + ms.ToArray().Length + " bytes");
-            }
-            Log.Info("Gzip stream took: " + sw.Elapsed.TotalMilliseconds + " ms");
-
-        }
 
         public static void LogEntityData()
         {
-            ExportGameTest();
-
-            return;
             EntityData[] entities = GameMain.mainPlayer.factory.entityPool;
             int entityCount = GameMain.mainPlayer.factory.entityCount;
             int entityCursor = GameMain.mainPlayer.factory.entityCursor;
