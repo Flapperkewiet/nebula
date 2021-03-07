@@ -8,6 +8,8 @@ namespace NebulaPatcher.Patches.Dynamic
         public static void Postfix()
         {
             //Use this function if you need to check/do something every frame
+            if (UnityEngine.Input.GetKey(UnityEngine.KeyCode.KeypadEnter))
+                NebulaWorld.SimulatedWorld.LogEntityData();
         }
     }
 }
