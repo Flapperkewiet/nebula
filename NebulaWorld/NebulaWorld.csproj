@@ -54,6 +54,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Console\Helper.cs" />
+    <Compile Include="Console\Commands\Help_Command.cs" />
+    <Compile Include="Console\Commands\ICommand.cs" />
+    <Compile Include="Console\Commands\ItemInfo_Command.cs" />
+    <Compile Include="Console\Commands\List_Command.cs" />
+    <Compile Include="Console\Exceptions\InvalidSyntaxException.cs" />
+    <Compile Include="Console\Exceptions\NebulaConsoleException.cs" />
+    <Compile Include="Console\Exceptions\NotFoundException.cs" />
+    <Compile Include="Console\Exceptions\NotInGameException.cs" />
+    <Compile Include="Console\Exceptions\UnknownCommandException.cs" />
+    <Compile Include="Console\NebulaConsole.cs" />
     <Compile Include="INetworkProvider.cs" />
     <Compile Include="InGamePopup.cs" />
     <Compile Include="LocalPlayer.cs" />

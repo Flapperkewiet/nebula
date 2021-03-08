@@ -186,6 +186,9 @@ namespace NebulaWorld
             // GameMain.mainPlayer.transform.eulerAngles = data.Rotation.ToUnity();
 
             LocalPlayer.SetReady();
+
+            Console.NebulaConsole.Init();
+
         }
     }
 }
